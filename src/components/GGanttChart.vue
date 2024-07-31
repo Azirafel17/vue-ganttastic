@@ -41,7 +41,11 @@
         </div>
       </div>
     </div>
-    <g-gantt-bar-tooltip :model-value="showTooltip || isDragging" :bar="tooltipBar">
+    <g-gantt-bar-tooltip
+      v-if="props.useToolTip"
+      :model-value="showTooltip || isDragging"
+      :bar="tooltipBar"
+    >
       <template #default>
         <slot name="bar-tooltip" :bar="tooltipBar" />
       </template>
@@ -81,6 +85,7 @@ import {
 } from "../provider/symbols.js"
 
 export interface GGanttChartProps {
+  useToolTip: boolean
   chartStart: string | Date
   chartEnd: string | Date
   precision?: "hour" | "day" | "date" | "week" | "month"
@@ -111,6 +116,7 @@ export type GGanttChartConfig = ToRefs<Required<GGanttChartProps>> & {
 }
 
 const props = withDefaults(defineProps<GGanttChartProps>(), {
+  useToolTip: true,
   currentTimeLabel: "",
   dateFormat: DEFAULT_DATE_FORMAT,
   precision: "day",

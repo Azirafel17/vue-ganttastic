@@ -1,9 +1,45 @@
-import dayjs, { type Dayjs } from "dayjs"
+import dayjs, { type Dayjs, locale, extend } from "dayjs"
 import { computed } from "vue"
 
 import type { GGanttChartConfig } from "../components/GGanttChart.vue"
 import type { GanttBarObject } from "../types"
 import provideConfig from "../provider/provideConfig.js"
+import ru from "dayjs/locale/ru"
+import updateLocale from "dayjs/plugin/updateLocale"
+
+locale(ru)
+extend(updateLocale)
+
+dayjs.updateLocale("ru", {
+  months: [
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь"
+  ],
+  monthsShort: [
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь"
+  ]
+})
 
 export const DEFAULT_DATE_FORMAT = "YYYY-MM-DD HH:mm"
 

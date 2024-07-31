@@ -2,13 +2,14 @@
   <g-gantt-chart
     :chart-start="chartStart"
     :chart-end="chartEnd"
-    precision="hour"
+    precision="day"
     :row-height="40"
     grid
     current-time
     width="100%"
     bar-start="beginDate"
     bar-end="endDate"
+    :use-tool-tip="true"
     :date-format="format"
     @click-bar="onClickBar($event.bar, $event.e, $event.datetime)"
     @mousedown-bar="onMousedownBar($event.bar, $event.e, $event.datetime)"

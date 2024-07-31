@@ -8,7 +8,7 @@
     <div
       class="g-grid-current-time-marker"
       :style="{
-        border: `1px dashed ${colors.markerCurrentTime}`
+        border: `1px solid ${colors.markerCurrentTime}`
       }"
     />
     <span class="g-grid-current-time-text" :style="{ color: colors.markerCurrentTime }">
