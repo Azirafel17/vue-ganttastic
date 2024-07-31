@@ -198,7 +198,7 @@ const initTooltip = (bar: GanttBarObject) => {
   }
   tooltipTimeoutId = setTimeout(() => {
     showTooltip.value = true
-  }, 800)
+  }, 300)
   tooltipBar.value = bar
 }
 

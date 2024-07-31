@@ -10,9 +10,11 @@
           fontFamily: font
         }"
       >
-        <div class="g-gantt-tooltip-color-dot" :style="{ background: dotColor }" />
         <slot :bar="bar" :bar-start="barStartRaw" :bar-end="barEndRaw">
-          {{ tooltipContent }}
+          <div>
+            <div class="g-tooltip-bar-label">{{ bar.ganttBarConfig.label }}</div>
+            <div>{{ tooltipContent }}</div>
+          </div>
         </slot>
       </div>
     </transition>
@@ -28,10 +30,10 @@ import provideConfig from "../provider/provideConfig.js"
 
 const TOOLTIP_FORMATS = {
   hour: "HH:mm",
-  day: "DD. MMM HH:mm",
-  date: "DD. MMMM YYYY",
-  month: "DD. MMMM YYYY",
-  week: "DD. MMMM YYYY (WW)"
+  day: "DD MMM HH:mm",
+  date: "DD MMMM YYYY",
+  month: "DD MMMM YYYY",
+  week: "DD MMMM YYYY (WW)"
 } as const
 
 const DEFAULT_DOT_COLOR = "cadetblue"
@@ -68,7 +70,7 @@ watch(
   { deep: true, immediate: true }
 )
 
-const dotColor = computed(() => bar?.value?.ganttBarConfig.style?.background || DEFAULT_DOT_COLOR)
+// const dotColor = computed(() => bar?.value?.ganttBarConfig.style?.background || DEFAULT_DOT_COLOR)
 
 const { toDayjs } = useDayjsHelper()
 
@@ -82,19 +84,24 @@ const tooltipContent = computed(() => {
   const format = TOOLTIP_FORMATS[precision.value]
   const barStartFormatted = toDayjs(barStartRaw.value).format(format)
   const barEndFormatted = toDayjs(barEndRaw.value).format(format)
-  return `${barStartFormatted} \u2013 ${barEndFormatted}`
+  return `${barStartFormatted} - ${barEndFormatted}`
 })
 </script>
 
 <style>
+.g-tooltip-bar-label {
+  padding-bottom: 3px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid rgb(177, 177, 177);
+}
 .g-gantt-tooltip {
   position: fixed;
-  background: black;
+  background: #525252;
   color: white;
   z-index: 4;
   font-size: 0.85em;
   padding: 5px;
-  border-radius: 3px;
+  border-radius: 2px;
   transition: opacity 0.2s;
   display: flex;
   align-items: center;
@@ -109,7 +116,7 @@ const tooltipContent = computed(() => {
   width: 0;
   height: 0;
   border: 10px solid transparent;
-  border-bottom-color: black;
+  border-bottom-color: #525252;
   border-top: 0;
   margin-left: -5px;
   margin-top: -5px;
