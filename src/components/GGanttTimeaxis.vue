@@ -1,6 +1,7 @@
 <template>
   <div class="g-timeaxis">
     <div class="g-timeunits-container">
+      <!-- Первый бар в заголовке с датами/временем-->
       <div
         v-for="({ label, value, date, width }, index) in timeaxisUnits.upperUnits"
         :key="label"
@@ -12,11 +13,11 @@
         }"
       >
         <slot name="upper-timeunit" :label="label" :value="value" :date="date">
-          {{ label }}
+          {{ capitalisize(label) }}
         </slot>
       </div>
     </div>
-
+    <!-- Второй бар в заголовке с датами/временем-->
     <div class="g-timeunits-container">
       <div
         v-for="({ label, value, date, width }, index) in timeaxisUnits.lowerUnits"
@@ -31,7 +32,7 @@
         }"
       >
         <slot name="timeunit" :label="label" :value="value" :date="date">
-          {{ label }}
+          {{ capitalisize(label) }}
         </slot>
       </div>
     </div>
@@ -41,6 +42,7 @@
 <script setup lang="ts">
 import provideConfig from "../provider/provideConfig.js"
 import useTimeaxisUnits from "../composables/useTimeaxisUnits.js"
+import { capitalisize } from "../utils/utils.js"
 
 const { precision, colors } = provideConfig()
 const { timeaxisUnits } = useTimeaxisUnits()

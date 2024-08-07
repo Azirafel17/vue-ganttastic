@@ -71,6 +71,11 @@ import GGanttTimeaxis from "./GGanttTimeaxis.vue"
 import GGanttBarTooltip from "./GGanttBarTooltip.vue"
 import GGanttCurrentTime from "./GGanttCurrentTime.vue"
 
+import dayjs, { locale, extend } from "dayjs"
+
+import ru from "dayjs/locale/ru"
+import updateLocale from "dayjs/plugin/updateLocale"
+
 import type { GanttBarObject } from "../types"
 import type { ColorSchemeKey } from "../color-schemes.js"
 
@@ -114,6 +119,40 @@ export type GGanttChartConfig = ToRefs<Required<GGanttChartProps>> & {
     height: Ref<number>
   }
 }
+
+locale(ru)
+extend(updateLocale)
+
+dayjs.updateLocale("ru", {
+  months: [
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь"
+  ],
+  monthsShort: [
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь"
+  ]
+})
 
 const props = withDefaults(defineProps<GGanttChartProps>(), {
   useToolTip: true,
@@ -278,14 +317,14 @@ provide(EMIT_BAR_EVENT_KEY, emitBarEvent)
   -webkit-touch-callout: none;
   user-select: none;
   font-variant-numeric: tabular-nums;
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 .with-column {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .g-gantt-rows-container {

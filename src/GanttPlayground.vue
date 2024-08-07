@@ -1,15 +1,18 @@
 <template>
+  <select v-model="type">
+    <option v-for="item in typeView" :key="item">{{ item }}</option>
+  </select>
   <g-gantt-chart
     :chart-start="chartStart"
     :chart-end="chartEnd"
-    precision="day"
+    :precision="type"
     :row-height="40"
     grid
     current-time
     width="100%"
     bar-start="beginDate"
     bar-end="endDate"
-    :use-tool-tip="true"
+    :use-tool-tip="false"
     :date-format="format"
     @click-bar="onClickBar($event.bar, $event.e, $event.datetime)"
     @mousedown-bar="onMousedownBar($event.bar, $event.e, $event.datetime)"
@@ -37,8 +40,10 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
-import type { GanttBarObject } from "./types"
+import type { GanttBarObject, TypeView } from "./types"
+import { typeView } from "./types"
 import dayjs from "dayjs"
+const type = ref<TypeView>("day")
 
 const format = ref("DD.MM.YYYY HH:mm")
 const chartStart = ref(dayjs().startOf("day").format(format.value))
@@ -76,7 +81,8 @@ const bars2 = ref([
     endDate: dayjs().add(2, "day").hour(19).startOf("hour").format(format.value),
     ganttBarConfig: {
       id: "7716981641",
-      label: "Lorem ipsum dolor",
+      label: "Lorem ipsum dolor1",
+      immobile: true,
       hasHandles: true,
       style: {
         background: "#b74b52"
@@ -164,7 +170,8 @@ const bars4 = [
         borderRadius: "10px",
         color: "black",
         fontSize: "14px"
-      }
+      },
+      immobile: true
     }
   }
 ]

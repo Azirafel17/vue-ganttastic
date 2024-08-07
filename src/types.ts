@@ -17,3 +17,6 @@ export type GanttBarObject = {
     class?: string
   }
 }
+
+export type TypeView = "hour" | "day" | "date" | "month" | "week"
+export const typeView: TypeView[] = ["date", "day", "hour", "month", "week"]

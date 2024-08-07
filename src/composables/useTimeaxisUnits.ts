@@ -38,7 +38,7 @@ export default function useTimeaxisUnits() {
   const displayFormats = {
     hour: "HH",
     date: "DD MMMM",
-    day: "DD",
+    day: "dddd DD.MM.YY",
     week: "WW",
     month: "MMMM YYYY",
     year: "YYYY"

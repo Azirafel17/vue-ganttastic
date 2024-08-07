@@ -49,7 +49,7 @@ const getChartRows = provideGetChartRows()
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top-left-radius: 5px;
+  border-top-left-radius: 0px;
 }
 
 .g-label-column-rows {
@@ -57,7 +57,7 @@ const getChartRows = provideGetChartRows()
   height: 100%;
   display: flex;
   flex-direction: column;
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 0px;
 }
 
 .g-label-column-row {
@@ -74,6 +74,6 @@ const getChartRows = provideGetChartRows()
 }
 
 .g-label-column-row:last-child {
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 0px;
 }
 </style>

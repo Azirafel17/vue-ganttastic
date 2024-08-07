@@ -12,7 +12,9 @@
       >
         <slot :bar="bar" :bar-start="barStartRaw" :bar-end="barEndRaw">
           <div>
-            <div class="g-tooltip-bar-label">{{ bar.ganttBarConfig.label }}</div>
+            <div v-if="bar && bar.ganttBarConfig?.label" class="g-tooltip-bar-label">
+              {{ bar.ganttBarConfig.label }}
+            </div>
             <div>{{ tooltipContent }}</div>
           </div>
         </slot>

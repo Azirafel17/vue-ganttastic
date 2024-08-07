@@ -4,7 +4,9 @@
   "description": "A simple and customizable Gantt chart component for Vue.js",
   "author": "Marko Zunic (@zunnzunn)",
   "scripts": {
-    "serve": "vite",
+    "publish": "npm publish",
+    "unpublish": "npm unpublish @lma/vue-ganttastic -f",
+    "dev": "vite",
     "build": "npm run build:types && npm run build:lib",
     "build:lib": "vite build",
     "build:types": "vue-tsc --declaration --emitDeclarationOnly --outDir lib_types",

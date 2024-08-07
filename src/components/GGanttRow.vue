@@ -74,9 +74,8 @@ const onDrop = (e: MouseEvent) => {
 }
 
 const isBlank = (str: string) => {
-  return (!str || /^\s*$/.test(str))
+  return !str || /^\s*$/.test(str)
 }
-
 </script>
 
 <style>
