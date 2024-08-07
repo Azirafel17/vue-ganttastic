@@ -1,10 +1,9 @@
 {
   "name": "@lma/vue-ganttastic",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "description": "A simple and customizable Gantt chart component for Vue.js",
   "author": "Marko Zunic (@zunnzunn)",
   "scripts": {
-    "publish": "npm publish",
     "publish-patch": "npm run build && npm version patch -f && npm publish ",
     "publish-minor": "npm run build && npm version minor -f && npm publish ",
     "publish-major": "npm run build && npm version major -f && npm publish ",
