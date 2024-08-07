@@ -13,8 +13,8 @@ export default defineConfig({
       { text: 'Home', link: '/' },
     ],
     sidebar: [
-      { text: 'Introduction', link: '/introduction'},
-      { text: 'Getting Started',link: '/getting-started' },
+      { text: 'Introduction', link: '/introduction' },
+      { text: 'Getting Started', link: '/getting-started' },
       { text: 'Common use cases', link: '/common-use-cases' },
       { text: 'Examples', link: '/examples' },
       {
@@ -24,9 +24,6 @@ export default defineConfig({
           { text: 'GGanttRow', link: '/GGanttRow' }
         ]
       }
-    ],
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/zunnzunn/vue-ganttastic' }
     ]
   }
 })
