@@ -76,7 +76,7 @@ import dayjs, { locale, extend } from "dayjs"
 import ru from "dayjs/locale/ru"
 import updateLocale from "dayjs/plugin/updateLocale"
 
-import type { GanttBarObject } from "../types"
+import type { DisplayFormats, GanttBarObject } from "../types"
 import type { ColorSchemeKey } from "../color-schemes.js"
 
 import { useElementSize } from "@vueuse/core"
@@ -110,6 +110,7 @@ export interface GGanttChartProps {
   font?: string
   labelColumnTitle?: string
   labelColumnWidth?: string
+  displayFormats: DisplayFormats
 }
 
 export type GGanttChartConfig = ToRefs<Required<GGanttChartProps>> & {
@@ -169,7 +170,8 @@ const props = withDefaults(defineProps<GGanttChartProps>(), {
   highlightedUnits: () => [],
   font: "inherit",
   labelColumnTitle: "",
-  labelColumnWidth: "150px"
+  labelColumnWidth: "150px",
+  displayFormats: undefined
 })
 
 const emit = defineEmits<{

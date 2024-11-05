@@ -22,6 +22,8 @@ The main component of Vue Ganttastic. Represents an entire chart and is meant to
 | `font` | string | `"Helvetica"`| Font family of the chart.
 | `label-column-title` | string? | `''` | If specified, a dedicated column for the row labels will be rendered on the left side of the graph. The specified title is displayed in the upper left corner, as the column's header.
 | `label-column-width` | string? | `150px` | Width of the column containing the row labels (if `label-column-title` specified)
+| `display-formats` | DisplayFormats? | Set custom formats date on axis.
+
 
 
 ## Custom Events

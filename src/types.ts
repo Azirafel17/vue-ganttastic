@@ -19,4 +19,7 @@ export type GanttBarObject = {
 }
 
 export type TypeView = "hour" | "day" | "date" | "month" | "week"
+export type TypeViewExtend = TypeView | "year"
 export const typeView: TypeView[] = ["date", "day", "hour", "month", "week"]
+
+export type DisplayFormats = Record<TypeViewExtend, string>

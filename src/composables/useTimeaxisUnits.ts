@@ -1,9 +1,10 @@
 import { computed } from "vue"
 import useDayjsHelper from "./useDayjsHelper.js"
 import provideConfig from "../provider/provideConfig.js"
+import type { DisplayFormats } from "src/types.js"
 
 export default function useTimeaxisUnits() {
-  const { precision } = provideConfig()
+  const { precision, displayFormats: DisplayFormatsConfig } = provideConfig()
   const { chartStartDayjs, chartEndDayjs } = useDayjsHelper()
 
   const upperPrecision = computed(() => {
@@ -35,14 +36,24 @@ export default function useTimeaxisUnits() {
     }
   })
 
-  const displayFormats = {
-    hour: "HH",
-    date: "DD MMMM",
-    day: "dddd DD.MM.YY",
-    week: "WW",
-    month: "MMMM YYYY",
-    year: "YYYY"
+  const initDisplayFormats = () => {
+    const displayFormats: DisplayFormats = {
+      hour: "HH",
+      date: "DD MMMM",
+      day: "dddd DD.MM.YY",
+      week: "WW",
+      month: "MMMM YYYY",
+      year: "YYYY"
+    }
+
+    if (!DisplayFormatsConfig.value) return displayFormats
+
+    if (Object.keys(DisplayFormatsConfig.value).length === 0) return displayFormats
+
+    return DisplayFormatsConfig.value
   }
+
+  const displayFormats: DisplayFormats = initDisplayFormats()
 
   const timeaxisUnits = computed(() => {
     const upperUnits: { label: string; value?: string; date: Date; width?: string }[] = []

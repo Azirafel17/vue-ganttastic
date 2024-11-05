@@ -3,13 +3,13 @@
     :id="barConfig.id"
     :class="['g-gantt-bar', barConfig.class || '']"
     :style="{
+      zIndex: isDragging ? 3 : 2,
       ...barConfig.style,
       position: 'absolute',
       top: `${rowHeight * 0.1}px`,
       left: `${xStart}px`,
       width: `${xEnd - xStart}px`,
-      height: `${rowHeight * 0.8}px`,
-      zIndex: isDragging ? 3 : 2
+      height: `${rowHeight * 0.8}px`
     }"
     @mousedown="onMouseEvent"
     @click="onMouseEvent"

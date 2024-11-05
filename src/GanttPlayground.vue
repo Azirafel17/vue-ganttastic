@@ -14,6 +14,7 @@
     bar-end="endDate"
     :use-tool-tip="false"
     :date-format="format"
+    :display-formats="displayTest"
     @click-bar="onClickBar($event.bar, $event.e, $event.datetime)"
     @mousedown-bar="onMousedownBar($event.bar, $event.e, $event.datetime)"
     @dblclick-bar="onMouseupBar($event.bar, $event.e, $event.datetime)"
@@ -50,6 +51,15 @@ const chartStart = ref(dayjs().startOf("day").format(format.value))
 const chartEnd = ref(
   dayjs(chartStart.value, format.value).add(3, "days").hour(12).format(format.value)
 )
+
+const displayTest = {
+  hour: "HH",
+  date: "DD MMMM",
+  day: "YY.MM.DD",
+  week: "WW",
+  month: "MMMM YYYY",
+  year: "YYYY"
+}
 
 const bars1 = ref<GanttBarObject[]>([
   {
